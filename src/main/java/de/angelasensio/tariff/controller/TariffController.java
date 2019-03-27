@@ -20,10 +20,10 @@ import org.springframework.web.bind.annotation.RestController;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-import de.angelasensio.tariff.model.Coverage;
-import de.angelasensio.tariff.model.Module;
-import de.angelasensio.tariff.model.Policy;
-import de.angelasensio.tariff.model.Result;
+import de.angelasensio.tariff.domain.Coverage;
+import de.angelasensio.tariff.domain.Module;
+import de.angelasensio.tariff.domain.Policy;
+import de.angelasensio.tariff.domain.Result;
 import de.angelasensio.tariff.service.CalculatorService;
 import de.angelasensio.tariff.service.PolicyStore;
 import de.angelasensio.tariff.util.CoverageOutOfRangeException;
@@ -39,7 +39,7 @@ public class TariffController {
     private final PolicyStore policyStore;
 
     @PostMapping
-    public ResponseEntity<Result> calculatePolicyPrice(@RequestBody Policy policy) {
+    public ResponseEntity<Result> calculatePolicyPrice(@RequestBody final Policy policy) {
         validatePolicy(policy);
         LOG.info("calculatePolicyPrice: {}", policy);
 
@@ -56,7 +56,7 @@ public class TariffController {
     }
 
     @GetMapping("/{policyId}")
-    public ResponseEntity<BigDecimal> retrievePriceForPolicyId(@PathVariable UUID policyId) {
+    public ResponseEntity<BigDecimal> retrievePriceForPolicyId(@PathVariable final UUID policyId) {
         requireNonNull(policyId, "policyId cannot be null");
         LOG.info("retrievePriceForPolicyId: {}", policyId);
         Optional<BigDecimal> price = policyStore.get(policyId);

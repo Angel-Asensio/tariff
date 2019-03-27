@@ -10,9 +10,9 @@ import java.util.HashSet;
 
 import org.junit.Test;
 
-import de.angelasensio.tariff.model.Module;
-import de.angelasensio.tariff.model.ModuleType;
-import de.angelasensio.tariff.model.Policy;
+import de.angelasensio.tariff.domain.Module;
+import de.angelasensio.tariff.domain.ModuleType;
+import de.angelasensio.tariff.domain.Policy;
 
 public class CalculatorServiceTest {
 

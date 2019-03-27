@@ -27,9 +27,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.context.WebApplicationContext;
 
-import de.angelasensio.tariff.model.Module;
-import de.angelasensio.tariff.model.ModuleType;
-import de.angelasensio.tariff.model.Policy;
+import de.angelasensio.tariff.domain.Module;
+import de.angelasensio.tariff.domain.ModuleType;
+import de.angelasensio.tariff.domain.Policy;
 
 
 @RunWith(SpringRunner.class)

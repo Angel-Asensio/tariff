@@ -1,4 +1,4 @@
-package de.angelasensio.tariff.model;
+package de.angelasensio.tariff.domain;
 
 import java.util.Collections;
 import java.util.Set;

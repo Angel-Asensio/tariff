@@ -5,8 +5,8 @@ import java.util.Set;
 
 import org.springframework.stereotype.Service;
 
-import de.angelasensio.tariff.model.Module;
-import de.angelasensio.tariff.model.Policy;
+import de.angelasensio.tariff.domain.Module;
+import de.angelasensio.tariff.domain.Policy;
 
 @Service
 public class CalculatorService {

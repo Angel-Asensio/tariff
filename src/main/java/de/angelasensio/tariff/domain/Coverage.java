@@ -1,4 +1,4 @@
-package de.angelasensio.tariff.model;
+package de.angelasensio.tariff.domain;
 
 import static com.google.common.collect.Range.closed;
 
