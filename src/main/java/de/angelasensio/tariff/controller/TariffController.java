@@ -70,7 +70,7 @@ public class TariffController {
         return new ResponseEntity<>(policyPrice, HttpStatus.OK);
     }
 
-    private void validatePolicy(final Policy policy) throws CoverageOutOfRangeException {
+    private void validatePolicy(final Policy policy) {
         requireNonNull(policy, "policy cannot be null");
         Set<Module> modules = policy.getModules();
         requireNonNull(modules, "modules cannot be null");
