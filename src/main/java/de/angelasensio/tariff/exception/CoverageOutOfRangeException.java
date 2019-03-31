@@ -1,4 +1,4 @@
-package de.angelasensio.tariff.util;
+package de.angelasensio.tariff.exception;
 
 public class CoverageOutOfRangeException extends RuntimeException {
 

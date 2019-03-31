@@ -26,8 +26,8 @@ import de.angelasensio.tariff.domain.Policy;
 import de.angelasensio.tariff.domain.Result;
 import de.angelasensio.tariff.service.CalculatorService;
 import de.angelasensio.tariff.service.PolicyStore;
-import de.angelasensio.tariff.util.CoverageOutOfRangeException;
-import de.angelasensio.tariff.util.PriceNotFoundException;
+import de.angelasensio.tariff.exception.CoverageOutOfRangeException;
+import de.angelasensio.tariff.exception.PriceNotFoundException;
 
 @RestController
 @RequestMapping("/tariff")

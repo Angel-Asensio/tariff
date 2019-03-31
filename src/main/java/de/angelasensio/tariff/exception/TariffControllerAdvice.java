@@ -1,4 +1,4 @@
-package de.angelasensio.tariff.util;
+package de.angelasensio.tariff.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
