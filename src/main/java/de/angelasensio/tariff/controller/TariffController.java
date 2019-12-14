@@ -41,7 +41,7 @@ public class TariffController {
     @PostMapping
     public ResponseEntity<Result> calculatePolicyPrice(@RequestBody final Policy policy) {
         validatePolicy(policy);
-        LOG.info("calculatePolicyPrice: {}", policy);
+        LOG.info("{}", policy);
 
         BigDecimal price = calculatorService.calculatePrice(policy);
 
@@ -51,21 +51,16 @@ public class TariffController {
                 .policyId(policy.getPolicyId())
                 .price(price)
                 .build();
-        LOG.info("result: {}", result);
+        LOG.info("final result: {}", result);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     @GetMapping("/{policyId}")
     public ResponseEntity<BigDecimal> retrievePriceForPolicyId(@PathVariable final UUID policyId) {
         requireNonNull(policyId, "policyId cannot be null");
-        LOG.info("retrievePriceForPolicyId: {}", policyId);
+        LOG.info("{}", policyId);
         Optional<BigDecimal> price = policyStore.get(policyId);
-
-        if (!price.isPresent()) {
-            throw new PriceNotFoundException(policyId);
-        }
-
-        BigDecimal policyPrice = price.get();
+        BigDecimal policyPrice = price.orElseThrow(() -> new PriceNotFoundException(policyId));
         LOG.info("price: {}", policyPrice);
         return new ResponseEntity<>(policyPrice, HttpStatus.OK);
     }

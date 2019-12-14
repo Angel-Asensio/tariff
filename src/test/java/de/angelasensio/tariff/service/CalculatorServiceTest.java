@@ -21,6 +21,7 @@ public class CalculatorServiceTest {
     @Test
     public void emptyPolicyReturnsZero() {
         Policy emptyPolicy = new Policy();
+
         assertThat(calculatorService.calculatePrice(emptyPolicy), is(BigDecimal.ZERO));
     }
 
