@@ -1,6 +1,7 @@
 package de.angelasensio.tariff.controller;
 
 import static java.util.Arrays.asList;
+import static org.junit.Assert.assertNotNull;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -11,8 +12,8 @@ import java.math.BigDecimal;
 import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.NoSuchElementException;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -52,12 +53,13 @@ public class TariffControllerTest {
     @Autowired
     void setConverters(HttpMessageConverter<?>[] converters) {
 
-        this.mappingJackson2HttpMessageConverter = Arrays.asList(converters).stream()
+        this.mappingJackson2HttpMessageConverter = Arrays.asList(converters)
+                .stream()
                 .filter(messageConverter -> messageConverter instanceof MappingJackson2HttpMessageConverter)
                 .findAny()
-                .get();
+                .orElseThrow(() -> new NoSuchElementException("no messageConverter was found"));
 
-        Assert.assertNotNull("the JSON message converter must not be null",
+        assertNotNull("the JSON message converter must not be null",
                 this.mappingJackson2HttpMessageConverter);
     }
 
@@ -92,7 +94,7 @@ public class TariffControllerTest {
                 .andExpect(status().isBadRequest());
     }
 
-    private String toJson(Object object) throws IOException {
+    private String toJson(final Object object) throws IOException {
         MockHttpOutputMessage mockHttpOutputMessage = new MockHttpOutputMessage();
         this.mappingJackson2HttpMessageConverter.write(object, MediaType.APPLICATION_JSON, mockHttpOutputMessage);
         return mockHttpOutputMessage.getBodyAsString();
