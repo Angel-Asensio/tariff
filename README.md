@@ -28,5 +28,3 @@ The solution should store calculated prices and make them accessible via an endp
 Constraints:
 You should not invest more than 6 hours on the task. Please deliver your solution within 7 days.
 
-adfafadfadfadfda
-ddsfgadfaddf
